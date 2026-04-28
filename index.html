@@ -1,241 +1,428 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ko Ramen — Pakistan's First Korean Convenience Store</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background: #121212; color: #FFFFFF; overflow-x: hidden; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: #121212;
+        color: #ffffff;
+        overflow-x: hidden;
+      }
 
-        .hero-heading {
-            font-family: "Playfair Display", serif;
-            font-size: clamp(2.5rem, 6vw, 5.5rem);
-            font-weight: 700;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            color: #FFFFFF;
-        }
+      .hero-heading {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.5rem, 6vw, 5.5rem);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        color: #ffffff;
+      }
 
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #121212; }
-        ::-webkit-scrollbar-thumb { background: #A17C3D; border-radius: 3px; }
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #121212;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #a17c3d;
+        border-radius: 3px;
+      }
 
-        .hero-overlay {
-            background: linear-gradient(
-                135deg,
-                rgba(18,18,18,0.93) 0%,
-                rgba(18,18,18,0.78) 40%,
-                rgba(18,18,18,0.52) 70%,
-                rgba(18,18,18,0.68) 100%
-            );
-        }
+      .hero-overlay {
+        background: linear-gradient(
+          135deg,
+          rgba(18, 18, 18, 0.93) 0%,
+          rgba(18, 18, 18, 0.78) 40%,
+          rgba(18, 18, 18, 0.52) 70%,
+          rgba(18, 18, 18, 0.68) 100%
+        );
+      }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-        .reveal-delay-4 { transition-delay: 0.4s; }
-        .reveal-delay-5 { transition-delay: 0.5s; }
-        .reveal-delay-6 { transition-delay: 0.6s; }
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+          opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-delay-1 {
+        transition-delay: 0.1s;
+      }
+      .reveal-delay-2 {
+        transition-delay: 0.2s;
+      }
+      .reveal-delay-3 {
+        transition-delay: 0.3s;
+      }
+      .reveal-delay-4 {
+        transition-delay: 0.4s;
+      }
+      .reveal-delay-5 {
+        transition-delay: 0.5s;
+      }
+      .reveal-delay-6 {
+        transition-delay: 0.6s;
+      }
 
-        .product-card {
-            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 60px rgba(161, 124, 61, 0.12);
-        }
-        .product-card:hover .product-img { transform: scale(1.05); }
-        .product-img { transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+      .product-card {
+        transition:
+          transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 60px rgba(161, 124, 61, 0.12);
+      }
+      .product-card:hover .product-img {
+        transform: scale(1.05);
+      }
+      .product-img {
+        transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      }
 
-        .line-grow {
-            width: 0;
-            transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .line-grow.visible { width: 60px; }
+      .line-grow {
+        width: 0;
+        transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .line-grow.visible {
+        width: 60px;
+      }
 
-        .nav-blur {
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            background: rgba(18, 18, 18, 0.82);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
+      .nav-blur {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        background: rgba(18, 18, 18, 0.82);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
 
-        .grain::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            pointer-events: none;
-        }
+      .grain::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        pointer-events: none;
+      }
 
-        @keyframes wa-float {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-4px) scale(1.05); }
+      @keyframes wa-float {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
         }
-        @keyframes wa-pulse-ring {
-            0% { transform: scale(1); opacity: 0.4; }
-            100% { transform: scale(1.6); opacity: 0; }
+        50% {
+          transform: translateY(-4px) scale(1.05);
         }
-        .wa-btn {
-            animation: wa-float 3s ease-in-out infinite;
-            box-shadow: 0 4px 25px rgba(37, 211, 102, 0.35);
+      }
+      @keyframes wa-pulse-ring {
+        0% {
+          transform: scale(1);
+          opacity: 0.4;
         }
-        .wa-btn::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            background: #25D366;
-            animation: wa-pulse-ring 2s ease-out infinite;
-            z-index: -1;
+        100% {
+          transform: scale(1.6);
+          opacity: 0;
         }
+      }
+      .wa-btn {
+        animation: wa-float 3s ease-in-out infinite;
+        box-shadow: 0 4px 25px rgba(37, 211, 102, 0.35);
+      }
+      .wa-btn::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: #25d366;
+        animation: wa-pulse-ring 2s ease-out infinite;
+        z-index: -1;
+      }
 
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
         }
-        .marquee-track { animation: marquee 30s linear infinite; }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .marquee-track {
+        animation: marquee 30s linear infinite;
+      }
 
-        .shine-effect { position: relative; overflow: hidden; }
-        .shine-effect::after {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: linear-gradient(to bottom right, rgba(255,255,255,0) 40%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0) 60%);
-            transform: rotate(30deg) translateX(-100%);
-            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .shine-effect:hover::after { transform: rotate(30deg) translateX(100%); }
+      .shine-effect {
+        position: relative;
+        overflow: hidden;
+      }
+      .shine-effect::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          to bottom right,
+          rgba(255, 255, 255, 0) 40%,
+          rgba(255, 255, 255, 0.03) 50%,
+          rgba(255, 255, 255, 0) 60%
+        );
+        transform: rotate(30deg) translateX(-100%);
+        transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .shine-effect:hover::after {
+        transform: rotate(30deg) translateX(100%);
+      }
 
-        .logo-img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            flex-shrink: 0;
-        }
-        .logo-img-footer {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            object-fit: cover;
-            flex-shrink: 0;
-        }
+      .logo-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+      .logo-img-footer {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
 
-        /* === Page Loader === */
-        #page-loader {
-            position: fixed; inset: 0; z-index: 9999;
-            background: #121212;
-            display: flex; align-items: center; justify-content: center;
-            transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1);
+      /* === Page Loader === */
+      #page-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: #121212;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      #page-loader.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .loader-logo {
+        animation: loader-pulse 1.6s ease-in-out infinite;
+      }
+      @keyframes loader-pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.7;
         }
-        #page-loader.fade-out { opacity: 0; pointer-events: none; }
-        .loader-logo { animation: loader-pulse 1.6s ease-in-out infinite; }
-        @keyframes loader-pulse {
-            0%, 100% { transform: scale(1); opacity: 0.7; }
-            50% { transform: scale(1.08); opacity: 1; }
+        50% {
+          transform: scale(1.08);
+          opacity: 1;
         }
-        .loader-line {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #A17C3D, transparent);
-            animation: loader-fill 1.3s ease-in-out forwards;
-            width: 0;
+      }
+      .loader-line {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #a17c3d, transparent);
+        animation: loader-fill 1.3s ease-in-out forwards;
+        width: 0;
+      }
+      @keyframes loader-fill {
+        to {
+          width: 100%;
         }
-        @keyframes loader-fill { to { width: 100%; } }
+      }
 
-        /* === Custom Cursor === */
-        #cursor-glow {
-            position: fixed; width: 320px; height: 320px; border-radius: 50%;
-            background: radial-gradient(circle, rgba(161,124,61,0.07) 0%, transparent 70%);
-            pointer-events: none; z-index: 9997;
-            transform: translate(-50%, -50%);
-            mix-blend-mode: screen;
-        }
-        #cursor-dot {
-            position: fixed; width: 6px; height: 6px;
-            background: #A17C3D; border-radius: 50%;
-            pointer-events: none; z-index: 9998;
-            transform: translate(-50%, -50%);
-            transition: width 0.25s, height 0.25s, background 0.25s, border 0.25s, opacity 0.3s;
-            opacity: 0;
-        }
+      /* === Custom Cursor === */
+      #cursor-glow {
+        position: fixed;
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(161, 124, 61, 0.07) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+        z-index: 9997;
+        transform: translate(-50%, -50%);
+        mix-blend-mode: screen;
+      }
+      #cursor-dot {
+        position: fixed;
+        width: 6px;
+        height: 6px;
+        background: #a17c3d;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.25s,
+          height 0.25s,
+          background 0.25s,
+          border 0.25s,
+          opacity 0.3s;
+        opacity: 0;
+      }
 
-        /* === Steam Particles === */
-        .steam-wrap { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 1; }
-        .steam-p {
-            position: absolute; bottom: -30px;
-            width: 3px; height: 80px;
-            background: linear-gradient(to top, transparent, rgba(255,255,255,0.05), transparent);
-            border-radius: 50%;
-            animation: steam-up linear infinite;
+      /* === Steam Particles === */
+      .steam-wrap {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 1;
+      }
+      .steam-p {
+        position: absolute;
+        bottom: -30px;
+        width: 3px;
+        height: 80px;
+        background: linear-gradient(
+          to top,
+          transparent,
+          rgba(255, 255, 255, 0.05),
+          transparent
+        );
+        border-radius: 50%;
+        animation: steam-up linear infinite;
+      }
+      @keyframes steam-up {
+        0% {
+          transform: translateY(0) scaleX(1);
+          opacity: 0;
         }
-        @keyframes steam-up {
-            0%   { transform: translateY(0) scaleX(1); opacity: 0; }
-            10%  { opacity: 1; }
-            60%  { transform: translateY(-50vh) scaleX(2.5); opacity: 0.4; }
-            100% { transform: translateY(-90vh) scaleX(0.5) rotate(15deg); opacity: 0; }
+        10% {
+          opacity: 1;
         }
+        60% {
+          transform: translateY(-50vh) scaleX(2.5);
+          opacity: 0.4;
+        }
+        100% {
+          transform: translateY(-90vh) scaleX(0.5) rotate(15deg);
+          opacity: 0;
+        }
+      }
 
-        /* === Gallery === */
-        .gallery-reel {
-            display: flex; gap: 1.25rem;
-            padding: 0 2rem 1rem;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-            cursor: grab;
-            -webkit-user-select: none; user-select: none;
+      /* === Gallery === */
+      .gallery-reel {
+        display: flex;
+        gap: 1.25rem;
+        padding: 0 2rem 1rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        cursor: grab;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+      .gallery-reel::-webkit-scrollbar {
+        display: none;
+      }
+      .gallery-reel.dragging {
+        cursor: grabbing;
+      }
+      .gallery-item {
+        flex-shrink: 0;
+        scroll-snap-align: start;
+        position: relative;
+        overflow: hidden;
+        border-radius: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition:
+          transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+          filter 0.5s ease;
+        filter: brightness(0.82) saturate(0.88);
+      }
+      .gallery-item:hover img {
+        transform: scale(1.05);
+        filter: brightness(1) saturate(1.1);
+      }
+      .g-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(18, 18, 18, 0.65) 0%,
+          transparent 55%
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+      .gallery-item:hover .g-overlay {
+        opacity: 1;
+      }
+      @keyframes hint {
+        0%,
+        100% {
+          transform: translateX(0);
+          opacity: 0.5;
         }
-        .gallery-reel::-webkit-scrollbar { display: none; }
-        .gallery-reel.dragging { cursor: grabbing; }
-        .gallery-item {
-            flex-shrink: 0; scroll-snap-align: start;
-            position: relative; overflow: hidden;
-            border-radius: 4px; border: 1px solid rgba(255,255,255,0.06);
+        50% {
+          transform: translateX(7px);
+          opacity: 1;
         }
-        .gallery-item img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.7s cubic-bezier(0.22,1,0.36,1), filter 0.5s ease;
-            filter: brightness(0.82) saturate(0.88);
+      }
+      .drag-hint {
+        animation: hint 2s ease-in-out infinite;
+      }
+      @keyframes qr-bob {
+        0%,
+        100% {
+          transform: translateY(0);
         }
-        .gallery-item:hover img { transform: scale(1.05); filter: brightness(1) saturate(1.1); }
-        .g-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(18,18,18,0.65) 0%, transparent 55%);
-            opacity: 0; transition: opacity 0.4s ease;
+        50% {
+          transform: translateY(-6px);
         }
-        .gallery-item:hover .g-overlay { opacity: 1; }
-        @keyframes hint { 0%,100% { transform: translateX(0); opacity: 0.5; } 50% { transform: translateX(7px); opacity: 1; } }
-        .drag-hint { animation: hint 2s ease-in-out infinite; }
-        @keyframes qr-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-        .qr-bob { animation: qr-bob 4s ease-in-out infinite; }
+      }
+      .qr-bob {
+        animation: qr-bob 4s ease-in-out infinite;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <!-- Page Loader -->
     <div id="page-loader">
-        <div class="text-center">
-            <img src="assets/logo.jpeg" alt="Ko Ramen" class="loader-logo w-20 h-20 rounded-full object-cover mx-auto mb-6 border border-white/10">
-            <div style="width:120px" class="mx-auto overflow-hidden">
-                <div class="loader-line"></div>
-            </div>
-            <p class="mt-4 text-neutral-600 text-[10px] font-bold tracking-[0.3em] uppercase">Loading Experience</p>
+      <div class="text-center">
+        <img
+          src="assets/logo.jpeg"
+          alt="Ko Ramen"
+          class="loader-logo w-20 h-20 rounded-full object-cover mx-auto mb-6 border border-white/10"
+        />
+        <div style="width: 120px" class="mx-auto overflow-hidden">
+          <div class="loader-line"></div>
         </div>
+        <p
+          class="mt-4 text-neutral-600 text-[10px] font-bold tracking-[0.3em] uppercase"
+        >
+          Loading Experience
+        </p>
+      </div>
     </div>
 
     <!-- Cursor -->
@@ -243,669 +430,1224 @@
     <div id="cursor-dot"></div>
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 nav-blur transition-all duration-500">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <a href="#" class="flex items-center gap-3 group">
-                    <img src="assets/logo.jpeg" alt="Ko Ramen" class="logo-img">
-                    <div class="flex flex-col">
-                        <span class="text-white font-bold text-base tracking-tight leading-none">KO RAMEN</span>
-                        <span class="text-neutral-500 text-[10px] font-medium tracking-[0.2em] uppercase leading-none mt-1">Korean Convenience</span>
-                    </div>
-                </a>
-                <div class="hidden md:flex items-center gap-10">
-                    <a href="#collection" class="text-neutral-400 text-xs font-semibold tracking-[0.15em] uppercase hover:text-white transition-colors duration-300">Collection</a>
-                    <a href="#lounge" class="text-neutral-400 text-xs font-semibold tracking-[0.15em] uppercase hover:text-white transition-colors duration-300">Noodle Lounge</a>
-                    <a href="#delivery" class="text-neutral-400 text-xs font-semibold tracking-[0.15em] uppercase hover:text-white transition-colors duration-300">Delivery</a>
-                    <a href="https://wa.me/923097898401" target="_blank" class="ml-4 px-6 py-2.5 bg-[#A17C3D] text-white text-xs font-bold tracking-[0.12em] uppercase rounded-sm hover:bg-[#B8934F] transition-colors duration-300">
-                        Contact
-                    </a>
-                </div>
-                <button id="menuToggle" class="md:hidden text-white p-2">
-                    <i data-lucide="menu" class="w-5 h-5"></i>
-                </button>
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 right-0 z-50 nav-blur transition-all duration-500"
+    >
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <a href="#" class="flex items-center gap-3 group">
+            <img src="assets/logo.jpeg" alt="Ko Ramen" class="logo-img" />
+            <div class="flex flex-col">
+              <span
+                class="text-white font-bold text-base tracking-tight leading-none"
+                >KO RAMEN</span
+              >
+              <span
+                class="text-neutral-500 text-[10px] font-medium tracking-[0.2em] uppercase leading-none mt-1"
+                >Korean Convenience</span
+              >
             </div>
+          </a>
+          <div class="hidden md:flex items-center gap-10">
+            <a
+              href="#collection"
+              class="text-neutral-400 text-xs font-semibold tracking-[0.15em] uppercase hover:text-white transition-colors duration-300"
+              >Collection</a
+            >
+            <a
+              href="#lounge"
+              class="text-neutral-400 text-xs font-semibold tracking-[0.15em] uppercase hover:text-white transition-colors duration-300"
+              >Noodle Lounge</a
+            >
+            <a
+              href="#delivery"
+              class="text-neutral-400 text-xs font-semibold tracking-[0.15em] uppercase hover:text-white transition-colors duration-300"
+              >Delivery</a
+            >
+            <a
+              href="https://wa.me/923097898401"
+              target="_blank"
+              class="ml-4 px-6 py-2.5 bg-[#A17C3D] text-white text-xs font-bold tracking-[0.12em] uppercase rounded-sm hover:bg-[#B8934F] transition-colors duration-300"
+            >
+              Contact
+            </a>
+          </div>
+          <button id="menuToggle" class="md:hidden text-white p-2">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
         </div>
-        <div id="mobileMenu" class="md:hidden hidden border-t border-white/5">
-            <div class="px-6 py-8 flex flex-col gap-6 bg-[#121212]/95 backdrop-blur-xl">
-                <a href="#collection" class="text-neutral-300 text-sm font-semibold tracking-[0.1em] uppercase mobile-link">Collection</a>
-                <a href="#lounge" class="text-neutral-300 text-sm font-semibold tracking-[0.1em] uppercase mobile-link">Noodle Lounge</a>
-                <a href="#delivery" class="text-neutral-300 text-sm font-semibold tracking-[0.1em] uppercase mobile-link">Delivery</a>
-                <a href="https://wa.me/923097898401" target="_blank" class="mt-2 px-6 py-3 bg-[#A17C3D] text-white text-xs font-bold tracking-[0.12em] uppercase rounded-sm text-center">Contact via WhatsApp</a>
-            </div>
+      </div>
+      <div id="mobileMenu" class="md:hidden hidden border-t border-white/5">
+        <div
+          class="px-6 py-8 flex flex-col gap-6 bg-[#121212]/95 backdrop-blur-xl"
+        >
+          <a
+            href="#collection"
+            class="text-neutral-300 text-sm font-semibold tracking-[0.1em] uppercase mobile-link"
+            >Collection</a
+          >
+          <a
+            href="#lounge"
+            class="text-neutral-300 text-sm font-semibold tracking-[0.1em] uppercase mobile-link"
+            >Noodle Lounge</a
+          >
+          <a
+            href="#delivery"
+            class="text-neutral-300 text-sm font-semibold tracking-[0.1em] uppercase mobile-link"
+            >Delivery</a
+          >
+          <a
+            href="https://wa.me/923097898401"
+            target="_blank"
+            class="mt-2 px-6 py-3 bg-[#A17C3D] text-white text-xs font-bold tracking-[0.12em] uppercase rounded-sm text-center"
+            >Contact via WhatsApp</a
+          >
         </div>
+      </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center grain">
-        <div class="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=1920&q=80" 
-                 alt="Ko Ramen Store Interior" 
-                 class="w-full h-full object-cover">
-            <div class="hero-overlay absolute inset-0"></div>
-            <!-- Steam Particles -->
-            <div class="steam-wrap" id="steamWrap"></div>
+    <section
+      class="relative min-h-screen flex items-center justify-center grain"
+    >
+      <div class="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=1920&q=80"
+          alt="Ko Ramen Store Interior"
+          class="w-full h-full object-cover"
+        />
+        <div class="hero-overlay absolute inset-0"></div>
+        <!-- Steam Particles -->
+        <div class="steam-wrap" id="steamWrap"></div>
+      </div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+        <!-- Logo mark -->
+        <div class="reveal mb-10 flex justify-center">
+          <img
+            src="assets/logo.jpeg"
+            alt="Ko Ramen"
+            class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-white/10 shadow-2xl"
+          />
         </div>
-        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
-            <!-- Logo mark -->
-            <div class="reveal mb-10 flex justify-center">
-                <img src="assets/logo.jpeg" alt="Ko Ramen" class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-white/10 shadow-2xl">
-            </div>
-            <h1 class="reveal reveal-delay-1 hero-heading">
-                Pakistan's First Korean<br>Convenience Store.
-            </h1>
-            <p class="reveal reveal-delay-2 mt-8 max-w-2xl mx-auto text-white text-base md:text-lg font-light leading-relaxed">
-                Located in Lahore and Islamabad — bringing you a curated selection of premium K-food, iconic noodle varieties, and an authentic Korean retail experience, all under one roof.
-            </p>
-            <div class="reveal reveal-delay-3 mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#collection" class="px-10 py-4 bg-[#A17C3D] text-white text-xs font-bold tracking-[0.15em] uppercase rounded-sm hover:bg-[#B8934F] transition-all duration-300 hover:shadow-lg hover:shadow-[#A17C3D]/20">
-                    Explore Collection
-                </a>
-                <a href="#lounge" class="px-10 py-4 border border-white/15 text-white text-xs font-bold tracking-[0.15em] uppercase rounded-sm hover:border-white/30 hover:bg-white/5 transition-all duration-300">
-                    The Noodle Lounge
-                </a>
-            </div>
+        <h1 class="reveal reveal-delay-1 hero-heading">
+          Pakistan's First Korean<br />Convenience Store.
+        </h1>
+        <p
+          class="reveal reveal-delay-2 mt-8 max-w-2xl mx-auto text-white text-base md:text-lg font-light leading-relaxed"
+        >
+          Located in Lahore and Islamabad — bringing you a curated selection of
+          premium K-food, iconic noodle varieties, and an authentic Korean
+          retail experience, all under one roof.
+        </p>
+        <div
+          class="reveal reveal-delay-3 mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <a
+            href="#collection"
+            class="px-10 py-4 bg-[#A17C3D] text-white text-xs font-bold tracking-[0.15em] uppercase rounded-sm hover:bg-[#B8934F] transition-all duration-300 hover:shadow-lg hover:shadow-[#A17C3D]/20"
+          >
+            Explore Collection
+          </a>
+          <a
+            href="#lounge"
+            class="px-10 py-4 border border-white/15 text-white text-xs font-bold tracking-[0.15em] uppercase rounded-sm hover:border-white/30 hover:bg-white/5 transition-all duration-300"
+          >
+            The Noodle Lounge
+          </a>
         </div>
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 reveal reveal-delay-4">
-            <span class="text-neutral-600 text-[10px] font-semibold tracking-[0.25em] uppercase">Scroll</span>
-            <div class="w-px h-10 bg-gradient-to-b from-neutral-600 to-transparent"></div>
-        </div>
+      </div>
+      <div
+        class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 reveal reveal-delay-4"
+      >
+        <span
+          class="text-neutral-600 text-[10px] font-semibold tracking-[0.25em] uppercase"
+          >Scroll</span
+        >
+        <div
+          class="w-px h-10 bg-gradient-to-b from-neutral-600 to-transparent"
+        ></div>
+      </div>
     </section>
 
     <!-- Marquee Banner -->
     <div class="bg-[#A17C3D] py-3 overflow-hidden">
-        <div class="marquee-track flex items-center whitespace-nowrap">
-            <span class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase">Buldak Collection</span>
-            <span class="text-white/40">✦</span>
-            <span class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase">Noodle Wall</span>
-            <span class="text-white/40">✦</span>
-            <span class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase">Premium K-Food</span>
-            <span class="text-white/40">✦</span>
-            <span class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase">Self-Cooking Lounge</span>
-            <span class="text-white/40">✦</span>
-            <span class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase">Lahore & Islamabad</span>
-            <span class="text-white/40">✦</span>
-            <span class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase">Authentic Korean</span>
-            <span class="text-white/40">✦</span>
-            <span class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase">Buldak Collection</span>
-            <span class="text-white/40">✦</span>
-            <span class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase">Noodle Wall</span>
-            <span class="text-white/40">✦</span>
-            <span class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase">Premium K-Food</span>
-            <span class="text-white/40">✦</span>
-            <span class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase">Self-Cooking Lounge</span>
-            <span class="text-white/40">✦</span>
-            <span class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase">Lahore & Islamabad</span>
-            <span class="text-white/40">✦</span>
-            <span class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase">Authentic Korean</span>
-            <span class="text-white/40">✦</span>
-        </div>
+      <div class="marquee-track flex items-center whitespace-nowrap">
+        <span
+          class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase"
+          >Buldak Collection</span
+        >
+        <span class="text-white/40">✦</span>
+        <span
+          class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase"
+          >Noodle Wall</span
+        >
+        <span class="text-white/40">✦</span>
+        <span
+          class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase"
+          >Premium K-Food</span
+        >
+        <span class="text-white/40">✦</span>
+        <span
+          class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase"
+          >Self-Cooking Lounge</span
+        >
+        <span class="text-white/40">✦</span>
+        <span
+          class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase"
+          >Lahore & Islamabad</span
+        >
+        <span class="text-white/40">✦</span>
+        <span
+          class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase"
+          >Authentic Korean</span
+        >
+        <span class="text-white/40">✦</span>
+        <span
+          class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase"
+          >Buldak Collection</span
+        >
+        <span class="text-white/40">✦</span>
+        <span
+          class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase"
+          >Noodle Wall</span
+        >
+        <span class="text-white/40">✦</span>
+        <span
+          class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase"
+          >Premium K-Food</span
+        >
+        <span class="text-white/40">✦</span>
+        <span
+          class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase"
+          >Self-Cooking Lounge</span
+        >
+        <span class="text-white/40">✦</span>
+        <span
+          class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase"
+          >Lahore & Islamabad</span
+        >
+        <span class="text-white/40">✦</span>
+        <span
+          class="mx-8 text-white/90 text-[11px] font-bold tracking-[0.25em] uppercase"
+          >Authentic Korean</span
+        >
+        <span class="text-white/40">✦</span>
+      </div>
     </div>
 
     <!-- The Retail Collection -->
     <section id="collection" class="relative py-28 md:py-36">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="max-w-xl mb-20">
-                <div class="reveal flex items-center gap-4 mb-6">
-                    <div class="line-grow h-px bg-[#A17C3D]"></div>
-                    <span class="text-[#A17C3D] text-[11px] font-bold tracking-[0.25em] uppercase">Curated Selection</span>
-                </div>
-                <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] text-white">
-                    The Retail<br>Collection.
-                </h2>
-                <p class="reveal reveal-delay-2 mt-6 text-neutral-500 text-base font-light leading-relaxed">
-                    Every product, hand-selected from Korea's finest. The Buldak Collection — engineered for those who demand intensity, depth, and uncompromising flavor.
-                </p>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="product-card reveal reveal-delay-1 bg-[#1a1a1a] border border-white/5 rounded-lg overflow-hidden shine-effect">
-                    <div class="aspect-[4/3] bg-[#222] overflow-hidden p-8">
-                        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=500&q=80" alt="Original Buldak" class="product-img w-full h-full object-cover rounded-sm">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-[10px] font-bold tracking-[0.2em] text-[#A17C3D] uppercase">Bestseller</span>
-                            <span class="text-[10px] font-semibold tracking-[0.15em] text-neutral-600 uppercase">4,400 SHU</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-white tracking-tight">Buldak Original</h3>
-                        <p class="mt-2 text-neutral-500 text-sm font-light leading-relaxed">The legendary fire noodles that started it all. Pure, uncut Korean heat.</p>
-                    </div>
-                </div>
-                <div class="product-card reveal reveal-delay-2 bg-[#1a1a1a] border border-white/5 rounded-lg overflow-hidden shine-effect">
-                    <div class="aspect-[4/3] bg-[#222] overflow-hidden p-8">
-                        <img src="https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=500&q=80" alt="Cheese Buldak" class="product-img w-full h-full object-cover rounded-sm">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-[10px] font-bold tracking-[0.2em] text-[#A17C3D] uppercase">Fan Favorite</span>
-                            <span class="text-[10px] font-semibold tracking-[0.15em] text-neutral-600 uppercase">3,200 SHU</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-white tracking-tight">Cheese Buldak</h3>
-                        <p class="mt-2 text-neutral-500 text-sm font-light leading-relaxed">Rich, creamy cheese sauce meets fiery Korean chili. The perfect balance.</p>
-                    </div>
-                </div>
-                <div class="product-card reveal reveal-delay-3 bg-[#1a1a1a] border border-white/5 rounded-lg overflow-hidden shine-effect">
-                    <div class="aspect-[4/3] bg-[#222] overflow-hidden p-8">
-                        <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=500&q=80" alt="Carbonara Buldak" class="product-img w-full h-full object-cover rounded-sm">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-[10px] font-bold tracking-[0.2em] text-neutral-600 uppercase">Premium</span>
-                            <span class="text-[10px] font-semibold tracking-[0.15em] text-neutral-600 uppercase">2,800 SHU</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-white tracking-tight">Carbonara Buldak</h3>
-                        <p class="mt-2 text-neutral-500 text-sm font-light leading-relaxed">Italian elegance fused with Korean fire. A sophisticated heat experience.</p>
-                    </div>
-                </div>
-                <div class="product-card reveal reveal-delay-1 bg-[#1a1a1a] border border-white/5 rounded-lg overflow-hidden shine-effect">
-                    <div class="aspect-[4/3] bg-[#222] overflow-hidden p-8">
-                        <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=500&q=80" alt="Curry Buldak" class="product-img w-full h-full object-cover rounded-sm">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-[10px] font-bold tracking-[0.2em] text-neutral-600 uppercase">New Arrival</span>
-                            <span class="text-[10px] font-semibold tracking-[0.15em] text-neutral-600 uppercase">2,600 SHU</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-white tracking-tight">Curry Buldak</h3>
-                        <p class="mt-2 text-neutral-500 text-sm font-light leading-relaxed">Deep, aromatic curry notes layered over signature Buldak spice. Complex and warming.</p>
-                    </div>
-                </div>
-                <div class="product-card reveal reveal-delay-2 bg-[#1a1a1a] border border-white/5 rounded-lg overflow-hidden shine-effect">
-                    <div class="aspect-[4/3] bg-[#222] overflow-hidden p-8">
-                        <img src="assets/5.png" alt="2X Spicy Buldak" class="product-img w-full h-full object-cover rounded-sm">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-[10px] font-bold tracking-[0.2em] text-red-500/80 uppercase">Extreme</span>
-                            <span class="text-[10px] font-semibold tracking-[0.15em] text-neutral-600 uppercase">10,000 SHU</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-white tracking-tight">2X Spicy Buldak</h3>
-                        <p class="mt-2 text-neutral-500 text-sm font-light leading-relaxed">Double the fire. Not for the faint-hearted. The ultimate spice challenge.</p>
-                    </div>
-                </div>
-                <div class="product-card reveal reveal-delay-3 bg-[#1a1a1a] border border-white/5 rounded-lg overflow-hidden shine-effect">
-                    <div class="aspect-[4/3] bg-[#222] overflow-hidden p-8">
-                        <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=500&q=80" alt="Corn Buldak" class="product-img w-full h-full object-cover rounded-sm">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-[10px] font-bold tracking-[0.2em] text-neutral-600 uppercase">Limited</span>
-                            <span class="text-[10px] font-semibold tracking-[0.15em] text-neutral-600 uppercase">2,400 SHU</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-white tracking-tight">Corn Buldak</h3>
-                        <p class="mt-2 text-neutral-500 text-sm font-light leading-relaxed">Sweet corn crunch meets savory-sweet Buldak sauce. Unexpectedly addictive.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="reveal mt-16 flex items-center gap-3 text-neutral-600">
-                <i data-lucide="info" class="w-4 h-4"></i>
-                <span class="text-xs font-light tracking-wide">SHU = Scoville Heat Units. Spice levels are approximate. Full collection available in-store.</span>
-            </div>
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="max-w-xl mb-20">
+          <div class="reveal flex items-center gap-4 mb-6">
+            <div class="line-grow h-px bg-[#A17C3D]"></div>
+            <span
+              class="text-[#A17C3D] text-[11px] font-bold tracking-[0.25em] uppercase"
+              >Curated Selection</span
+            >
+          </div>
+          <h2
+            class="reveal reveal-delay-1 text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] text-white"
+          >
+            The Retail<br />Collection.
+          </h2>
+          <p
+            class="reveal reveal-delay-2 mt-6 text-neutral-500 text-base font-light leading-relaxed"
+          >
+            Every product, hand-selected from Korea's finest. The Buldak
+            Collection — engineered for those who demand intensity, depth, and
+            uncompromising flavor.
+          </p>
         </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            class="product-card reveal reveal-delay-1 bg-[#1a1a1a] border border-white/5 rounded-lg overflow-hidden shine-effect"
+          >
+            <div class="aspect-[4/3] bg-[#222] overflow-hidden p-8">
+              <img
+                src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=500&q=80"
+                alt="Original Buldak"
+                class="product-img w-full h-full object-cover rounded-sm"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="text-[10px] font-bold tracking-[0.2em] text-[#A17C3D] uppercase"
+                  >Bestseller</span
+                >
+                <span
+                  class="text-[10px] font-semibold tracking-[0.15em] text-neutral-600 uppercase"
+                  >4,400 SHU</span
+                >
+              </div>
+              <h3 class="text-lg font-bold text-white tracking-tight">
+                Buldak Original
+              </h3>
+              <p
+                class="mt-2 text-neutral-500 text-sm font-light leading-relaxed"
+              >
+                The legendary fire noodles that started it all. Pure, uncut
+                Korean heat.
+              </p>
+            </div>
+          </div>
+          <div
+            class="product-card reveal reveal-delay-2 bg-[#1a1a1a] border border-white/5 rounded-lg overflow-hidden shine-effect"
+          >
+            <div class="aspect-[4/3] bg-[#222] overflow-hidden p-8">
+              <img
+                src="https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=500&q=80"
+                alt="Cheese Buldak"
+                class="product-img w-full h-full object-cover rounded-sm"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="text-[10px] font-bold tracking-[0.2em] text-[#A17C3D] uppercase"
+                  >Fan Favorite</span
+                >
+                <span
+                  class="text-[10px] font-semibold tracking-[0.15em] text-neutral-600 uppercase"
+                  >3,200 SHU</span
+                >
+              </div>
+              <h3 class="text-lg font-bold text-white tracking-tight">
+                Cheese Buldak
+              </h3>
+              <p
+                class="mt-2 text-neutral-500 text-sm font-light leading-relaxed"
+              >
+                Rich, creamy cheese sauce meets fiery Korean chili. The perfect
+                balance.
+              </p>
+            </div>
+          </div>
+          <div
+            class="product-card reveal reveal-delay-3 bg-[#1a1a1a] border border-white/5 rounded-lg overflow-hidden shine-effect"
+          >
+            <div class="aspect-[4/3] bg-[#222] overflow-hidden p-8">
+              <img
+                src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=500&q=80"
+                alt="Carbonara Buldak"
+                class="product-img w-full h-full object-cover rounded-sm"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="text-[10px] font-bold tracking-[0.2em] text-neutral-600 uppercase"
+                  >Premium</span
+                >
+                <span
+                  class="text-[10px] font-semibold tracking-[0.15em] text-neutral-600 uppercase"
+                  >2,800 SHU</span
+                >
+              </div>
+              <h3 class="text-lg font-bold text-white tracking-tight">
+                Carbonara Buldak
+              </h3>
+              <p
+                class="mt-2 text-neutral-500 text-sm font-light leading-relaxed"
+              >
+                Italian elegance fused with Korean fire. A sophisticated heat
+                experience.
+              </p>
+            </div>
+          </div>
+          <div
+            class="product-card reveal reveal-delay-1 bg-[#1a1a1a] border border-white/5 rounded-lg overflow-hidden shine-effect"
+          >
+            <div class="aspect-[4/3] bg-[#222] overflow-hidden p-8">
+              <img
+                src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=500&q=80"
+                alt="Curry Buldak"
+                class="product-img w-full h-full object-cover rounded-sm"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="text-[10px] font-bold tracking-[0.2em] text-neutral-600 uppercase"
+                  >New Arrival</span
+                >
+                <span
+                  class="text-[10px] font-semibold tracking-[0.15em] text-neutral-600 uppercase"
+                  >2,600 SHU</span
+                >
+              </div>
+              <h3 class="text-lg font-bold text-white tracking-tight">
+                Curry Buldak
+              </h3>
+              <p
+                class="mt-2 text-neutral-500 text-sm font-light leading-relaxed"
+              >
+                Deep, aromatic curry notes layered over signature Buldak spice.
+                Complex and warming.
+              </p>
+            </div>
+          </div>
+          <div
+            class="product-card reveal reveal-delay-2 bg-[#1a1a1a] border border-white/5 rounded-lg overflow-hidden shine-effect"
+          >
+            <div class="aspect-[4/3] bg-[#222] overflow-hidden p-8">
+              <img
+                src="assets/5.png"
+                alt="2X Spicy Buldak"
+                class="product-img w-full h-full object-cover rounded-sm"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="text-[10px] font-bold tracking-[0.2em] text-red-500/80 uppercase"
+                  >Extreme</span
+                >
+                <span
+                  class="text-[10px] font-semibold tracking-[0.15em] text-neutral-600 uppercase"
+                  >10,000 SHU</span
+                >
+              </div>
+              <h3 class="text-lg font-bold text-white tracking-tight">
+                2X Spicy Buldak
+              </h3>
+              <p
+                class="mt-2 text-neutral-500 text-sm font-light leading-relaxed"
+              >
+                Double the fire. Not for the faint-hearted. The ultimate spice
+                challenge.
+              </p>
+            </div>
+          </div>
+          <div
+            class="product-card reveal reveal-delay-3 bg-[#1a1a1a] border border-white/5 rounded-lg overflow-hidden shine-effect"
+          >
+            <div class="aspect-[4/3] bg-[#222] overflow-hidden p-8">
+              <img
+                src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=500&q=80"
+                alt="Corn Buldak"
+                class="product-img w-full h-full object-cover rounded-sm"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="text-[10px] font-bold tracking-[0.2em] text-neutral-600 uppercase"
+                  >Limited</span
+                >
+                <span
+                  class="text-[10px] font-semibold tracking-[0.15em] text-neutral-600 uppercase"
+                  >2,400 SHU</span
+                >
+              </div>
+              <h3 class="text-lg font-bold text-white tracking-tight">
+                Corn Buldak
+              </h3>
+              <p
+                class="mt-2 text-neutral-500 text-sm font-light leading-relaxed"
+              >
+                Sweet corn crunch meets savory-sweet Buldak sauce. Unexpectedly
+                addictive.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="reveal mt-16 flex items-center gap-3 text-neutral-600">
+          <i data-lucide="info" class="w-4 h-4"></i>
+          <span class="text-xs font-light tracking-wide"
+            >SHU = Scoville Heat Units. Spice levels are approximate. Full
+            collection available in-store.</span
+          >
+        </div>
+      </div>
     </section>
 
     <!-- The Noodle Wall -->
     <section class="relative py-0">
-        <div class="relative h-[50vh] md:h-[65vh] overflow-hidden">
-            <img src="assets/signature.jpeg" alt="The Noodle Wall" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-b from-[#121212] via-[#121212]/50 to-[#121212]"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-                <div class="text-center px-6">
-                    <div class="reveal">
-                        <span class="text-[#A17C3D] text-[11px] font-bold tracking-[0.3em] uppercase block mb-6">Signature Feature</span>
-                        <h2 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none text-white">
-                            The Noodle<br>Wall.
-                        </h2>
-                        <p class="mt-6 text-neutral-400 text-sm md:text-base font-light max-w-md mx-auto">
-                            Over 50 varieties. Floor to ceiling. A monument to Korea's noodle culture — right here in Pakistan.
-                        </p>
-                    </div>
-                </div>
+      <div class="relative h-[50vh] md:h-[65vh] overflow-hidden">
+        <img
+          src="assets/signature.jpeg"
+          alt="The Noodle Wall"
+          class="w-full h-full object-cover"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-[#121212] via-[#121212]/50 to-[#121212]"
+        ></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center px-6">
+            <div class="reveal">
+              <span
+                class="text-[#A17C3D] text-[11px] font-bold tracking-[0.3em] uppercase block mb-6"
+                >Signature Feature</span
+              >
+              <h2
+                class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none text-white"
+              >
+                The Noodle<br />Wall.
+              </h2>
+              <p
+                class="mt-6 text-neutral-400 text-sm md:text-base font-light max-w-md mx-auto"
+              >
+                Over 50 varieties. Floor to ceiling. A monument to Korea's
+                noodle culture — right here in Pakistan.
+              </p>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- The Noodle Lounge -->
     <section id="lounge" class="relative py-28 md:py-36 bg-[#F2F2F2] grain">
-        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-                <div class="reveal relative">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="The Noodle Lounge Interior" class="w-full aspect-[4/5] object-cover rounded-lg shadow-2xl">
-                        <div class="absolute -bottom-6 -right-6 md:-right-10 bg-white p-6 md:p-8 rounded-lg shadow-xl max-w-[220px]">
-                            <div class="flex items-center gap-2 mb-3">
-                                <i data-lucide="flame" class="w-4 h-4 text-[#A17C3D]"></i>
-                                <span class="text-[10px] font-bold tracking-[0.2em] text-[#A17C3D] uppercase">Cultural Hub</span>
-                            </div>
-                            <p class="text-[#121212] text-sm font-light leading-relaxed">
-                                Community post-it wall. Every note, a story from Pakistan's K-culture community.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="absolute -top-4 -left-4 w-20 h-20 border border-[#A17C3D]/30 rounded-sm"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center"
+        >
+          <div class="reveal relative">
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80"
+                alt="The Noodle Lounge Interior"
+                class="w-full aspect-[4/5] object-cover rounded-lg shadow-2xl"
+              />
+              <div
+                class="absolute -bottom-6 -right-6 md:-right-10 bg-white p-6 md:p-8 rounded-lg shadow-xl max-w-[220px]"
+              >
+                <div class="flex items-center gap-2 mb-3">
+                  <i data-lucide="flame" class="w-4 h-4 text-[#A17C3D]"></i>
+                  <span
+                    class="text-[10px] font-bold tracking-[0.2em] text-[#A17C3D] uppercase"
+                    >Cultural Hub</span
+                  >
+                </div>
+                <p class="text-[#121212] text-sm font-light leading-relaxed">
+                  Community post-it wall. Every note, a story from Pakistan's
+                  K-culture community.
+                </p>
+              </div>
+            </div>
+            <div
+              class="absolute -top-4 -left-4 w-20 h-20 border border-[#A17C3D]/30 rounded-sm"
+            ></div>
+          </div>
+          <div>
+            <div class="reveal flex items-center gap-4 mb-6">
+              <div class="line-grow h-px bg-[#A17C3D]"></div>
+              <span
+                class="text-[#A17C3D] text-[11px] font-bold tracking-[0.25em] uppercase"
+                >In-Store Experience</span
+              >
+            </div>
+            <h2
+              class="reveal reveal-delay-1 text-4xl md:text-5xl font-black tracking-tight leading-[1.05] text-[#121212]"
+            >
+              The Noodle<br />Lounge.
+            </h2>
+            <p
+              class="reveal reveal-delay-2 mt-8 text-neutral-600 text-base font-light leading-[1.8]"
+            >
+              More than a self-cooking station — it's a minimalist sanctuary
+              designed for the ritual of ramen. Clean wooden textures, soft
+              ambient lighting, and the quiet satisfaction of cooking your own
+              perfect bowl.
+            </p>
+            <p
+              class="reveal reveal-delay-3 mt-4 text-neutral-600 text-base font-light leading-[1.8]"
+            >
+              The community post-it wall transforms every visit into a shared
+              cultural moment. Messages in Korean, English, and Urdu — a living
+              archive of Pakistan's growing K-food movement.
+            </p>
+            <div class="reveal reveal-delay-4 mt-12 grid grid-cols-2 gap-6">
+              <div class="flex items-start gap-3">
+                <div
+                  class="w-8 h-8 bg-[#121212] rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5"
+                >
+                  <i data-lucide="chef-hat" class="w-4 h-4 text-[#A17C3D]"></i>
                 </div>
                 <div>
-                    <div class="reveal flex items-center gap-4 mb-6">
-                        <div class="line-grow h-px bg-[#A17C3D]"></div>
-                        <span class="text-[#A17C3D] text-[11px] font-bold tracking-[0.25em] uppercase">In-Store Experience</span>
-                    </div>
-                    <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black tracking-tight leading-[1.05] text-[#121212]">
-                        The Noodle<br>Lounge.
-                    </h2>
-                    <p class="reveal reveal-delay-2 mt-8 text-neutral-600 text-base font-light leading-[1.8]">
-                        More than a self-cooking station — it's a minimalist sanctuary designed for the ritual of ramen. Clean wooden textures, soft ambient lighting, and the quiet satisfaction of cooking your own perfect bowl.
-                    </p>
-                    <p class="reveal reveal-delay-3 mt-4 text-neutral-600 text-base font-light leading-[1.8]">
-                        The community post-it wall transforms every visit into a shared cultural moment. Messages in Korean, English, and Urdu — a living archive of Pakistan's growing K-food movement.
-                    </p>
-                    <div class="reveal reveal-delay-4 mt-12 grid grid-cols-2 gap-6">
-                        <div class="flex items-start gap-3">
-                            <div class="w-8 h-8 bg-[#121212] rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <i data-lucide="chef-hat" class="w-4 h-4 text-[#A17C3D]"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-[#121212] text-sm font-bold tracking-tight">Self-Cook Stations</h4>
-                                <p class="text-neutral-500 text-xs font-light mt-1">Premium equipment, individual pods</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <div class="w-8 h-8 bg-[#121212] rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <i data-lucide="trees" class="w-4 h-4 text-[#A17C3D]"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-[#121212] text-sm font-bold tracking-tight">Natural Materials</h4>
-                                <p class="text-neutral-500 text-xs font-light mt-1">Wood, stone, and intentional space</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <div class="w-8 h-8 bg-[#121212] rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <i data-lucide="message-square" class="w-4 h-4 text-[#A17C3D]"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-[#121212] text-sm font-bold tracking-tight">Post-It Wall</h4>
-                                <p class="text-neutral-500 text-xs font-light mt-1">A community canvas of stories</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <div class="w-8 h-8 bg-[#121212] rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <i data-lucide="music" class="w-4 h-4 text-[#A17C3D]"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-[#121212] text-sm font-bold tracking-tight">Curated Ambiance</h4>
-                                <p class="text-neutral-500 text-xs font-light mt-1">K-indie playlists, soft lighting</p>
-                            </div>
-                        </div>
-                    </div>
+                  <h4 class="text-[#121212] text-sm font-bold tracking-tight">
+                    Self-Cook Stations
+                  </h4>
+                  <p class="text-neutral-500 text-xs font-light mt-1">
+                    Premium equipment, individual pods
+                  </p>
                 </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div
+                  class="w-8 h-8 bg-[#121212] rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5"
+                >
+                  <i data-lucide="trees" class="w-4 h-4 text-[#A17C3D]"></i>
+                </div>
+                <div>
+                  <h4 class="text-[#121212] text-sm font-bold tracking-tight">
+                    Natural Materials
+                  </h4>
+                  <p class="text-neutral-500 text-xs font-light mt-1">
+                    Wood, stone, and intentional space
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div
+                  class="w-8 h-8 bg-[#121212] rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5"
+                >
+                  <i
+                    data-lucide="message-square"
+                    class="w-4 h-4 text-[#A17C3D]"
+                  ></i>
+                </div>
+                <div>
+                  <h4 class="text-[#121212] text-sm font-bold tracking-tight">
+                    Post-It Wall
+                  </h4>
+                  <p class="text-neutral-500 text-xs font-light mt-1">
+                    A community canvas of stories
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div
+                  class="w-8 h-8 bg-[#121212] rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5"
+                >
+                  <i data-lucide="music" class="w-4 h-4 text-[#A17C3D]"></i>
+                </div>
+                <div>
+                  <h4 class="text-[#121212] text-sm font-bold tracking-tight">
+                    Curated Ambiance
+                  </h4>
+                  <p class="text-neutral-500 text-xs font-light mt-1">
+                    K-indie playlists, soft lighting
+                  </p>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Stats Bar -->
     <section class="bg-[#121212] py-16 border-y border-white/5">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-                <div class="reveal text-center">
-                    <div class="text-3xl md:text-4xl font-black text-white tracking-tight">50+</div>
-                    <div class="mt-2 text-neutral-500 text-[11px] font-semibold tracking-[0.2em] uppercase">Noodle Varieties</div>
-                </div>
-                <div class="reveal reveal-delay-1 text-center">
-                    <div class="text-3xl md:text-4xl font-black text-[#A17C3D] tracking-tight">2</div>
-                    <div class="mt-2 text-neutral-500 text-[11px] font-semibold tracking-[0.2em] uppercase">Cities in Pakistan</div>
-                </div>
-                <div class="reveal reveal-delay-2 text-center">
-                    <div class="text-3xl md:text-4xl font-black text-white tracking-tight">100%</div>
-                    <div class="mt-2 text-neutral-500 text-[11px] font-semibold tracking-[0.2em] uppercase">Korean Imported</div>
-                </div>
-                <div class="reveal reveal-delay-3 text-center">
-                    <div class="text-3xl md:text-4xl font-black text-[#A17C3D] tracking-tight">∞</div>
-                    <div class="mt-2 text-neutral-500 text-[11px] font-semibold tracking-[0.2em] uppercase">Stories on the Wall</div>
-                </div>
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+          <div class="reveal text-center">
+            <div
+              class="text-3xl md:text-4xl font-black text-white tracking-tight"
+            >
+              50+
             </div>
+            <div
+              class="mt-2 text-neutral-500 text-[11px] font-semibold tracking-[0.2em] uppercase"
+            >
+              Noodle Varieties
+            </div>
+          </div>
+          <div class="reveal reveal-delay-1 text-center">
+            <div
+              class="text-3xl md:text-4xl font-black text-[#A17C3D] tracking-tight"
+            >
+              2
+            </div>
+            <div
+              class="mt-2 text-neutral-500 text-[11px] font-semibold tracking-[0.2em] uppercase"
+            >
+              Cities in Pakistan
+            </div>
+          </div>
+          <div class="reveal reveal-delay-2 text-center">
+            <div
+              class="text-3xl md:text-4xl font-black text-white tracking-tight"
+            >
+              100%
+            </div>
+            <div
+              class="mt-2 text-neutral-500 text-[11px] font-semibold tracking-[0.2em] uppercase"
+            >
+              Korean Imported
+            </div>
+          </div>
+          <div class="reveal reveal-delay-3 text-center">
+            <div
+              class="text-3xl md:text-4xl font-black text-[#A17C3D] tracking-tight"
+            >
+              ∞
+            </div>
+            <div
+              class="mt-2 text-neutral-500 text-[11px] font-semibold tracking-[0.2em] uppercase"
+            >
+              Stories on the Wall
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-
     <!-- Strategic Delivery Section -->
-    <section id="delivery" class="relative py-28 md:py-36 bg-[#121212] grain overflow-hidden">
-        <div class="absolute top-0 right-0 w-1/2 h-full opacity-[0.03]">
-            <div class="absolute top-20 right-20 w-96 h-96 border border-white rounded-full"></div>
-            <div class="absolute top-40 right-40 w-64 h-64 border border-white rounded-full"></div>
-        </div>
-        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <div class="reveal flex items-center gap-4 mb-6">
-                        <div class="line-grow h-px bg-[#A17C3D]"></div>
-                        <span class="text-[#A17C3D] text-[11px] font-bold tracking-[0.25em] uppercase">Delivered to You</span>
-                    </div>
-                    <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] text-white">
-                        Strategic<br>Delivery.
-                    </h2>
-                    <p class="reveal reveal-delay-2 mt-8 text-neutral-500 text-base font-light leading-[1.8]">
-                        Can't make it to the store? The full Ko Ramen experience is available through Foodpanda. Same curated selection, same premium standard — delivered straight to your door across Lahore and Islamabad.
-                    </p>
-                    <div class="reveal reveal-delay-3 mt-10 space-y-4">
-                        <div class="flex items-center gap-4">
-                            <div class="w-5 h-5 flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-[#A17C3D]"></i></div>
-                            <span class="text-neutral-300 text-sm font-light">Full Buldak Collection available for delivery</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-5 h-5 flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-[#A17C3D]"></i></div>
-                            <span class="text-neutral-300 text-sm font-light">Premium K-snacks, drinks, and instant meals</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-5 h-5 flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-[#A17C3D]"></i></div>
-                            <span class="text-neutral-300 text-sm font-light">Carefully packaged to preserve quality</span>
-                        </div>
-                    </div>
-                    <div class="reveal reveal-delay-4 mt-12">
-                        <a href="https://www.foodpanda.pk/" target="_blank" class="inline-flex items-center gap-4 px-10 py-5 bg-[#D70F64] text-white rounded-lg hover:bg-[#E8367E] transition-all duration-300 hover:shadow-lg hover:shadow-[#D70F64]/20 group">
-                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none">
-                                <path d="M4 19.5C4 18.837 4.26339 18.2011 4.73223 17.7322C5.20107 17.2634 5.83696 17 6.5 17C7.16304 17 7.79893 17.2634 8.26777 17.7322C8.73661 18.2011 9 18.837 9 19.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M20 19.5C20 18.837 19.7366 18.2011 19.2678 17.7322C18.7989 17.2634 18.163 17 17.5 17C16.837 17 16.2011 17.2634 15.7322 17.7322C15.2634 18.2011 15 18.837 15 19.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M20 17H4V11C4 9.93913 4.42143 8.92172 5.17157 8.17157C5.92172 7.42143 6.93913 7 8 7H16C17.0609 7 18.0783 7.42143 18.8284 8.17157C19.5786 8.92172 20 9.93913 20 11V17Z" stroke="white" stroke-width="2"/>
-                                <path d="M9 4L12 7L15 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <div class="text-left">
-                                <div class="text-xs font-bold tracking-[0.12em] uppercase">Order on Foodpanda</div>
-                                <div class="text-[10px] font-light text-white/70 mt-0.5">Lahore & Islamabad</div>
-                            </div>
-                            <i data-lucide="arrow-up-right" class="w-4 h-4 ml-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="reveal relative">
-                    <div class="relative bg-[#1a1a1a] border border-white/5 rounded-2xl p-8 md:p-12">
-                        <div class="space-y-6">
-                            <div class="flex items-center justify-between">
-                                <span class="text-[10px] font-bold tracking-[0.2em] text-neutral-600 uppercase">Your Order</span>
-                                <span class="text-[10px] font-bold tracking-[0.2em] text-[#A17C3D] uppercase">3 Items</span>
-                            </div>
-                            <div class="space-y-4">
-                                <div class="flex items-center gap-4 p-4 bg-white/[0.03] rounded-lg border border-white/5">
-                                    <div class="w-12 h-12 bg-[#A17C3D]/10 rounded-md flex items-center justify-center flex-shrink-0">
-                                        <i data-lucide="flame" class="w-5 h-5 text-[#A17C3D]"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <div class="text-white text-sm font-semibold">Buldak Original</div>
-                                        <div class="text-neutral-600 text-xs font-light">× 2</div>
-                                    </div>
-                                    <div class="text-white text-sm font-semibold">PKR 780</div>
-                                </div>
-                                <div class="flex items-center gap-4 p-4 bg-white/[0.03] rounded-lg border border-white/5">
-                                    <div class="w-12 h-12 bg-[#A17C3D]/10 rounded-md flex items-center justify-center flex-shrink-0">
-                                        <i data-lucide="star" class="w-5 h-5 text-[#A17C3D]"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <div class="text-white text-sm font-semibold">Cheese Buldak</div>
-                                        <div class="text-neutral-600 text-xs font-light">× 1</div>
-                                    </div>
-                                    <div class="text-white text-sm font-semibold">PKR 450</div>
-                                </div>
-                            </div>
-                            <div class="border-t border-white/5 pt-4 flex items-center justify-between">
-                                <span class="text-neutral-500 text-sm font-light">Delivery</span>
-                                <span class="text-[#A17C3D] text-sm font-semibold">FREE</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-white text-base font-bold">Total</span>
-                                <span class="text-white text-xl font-black">PKR 1,230</span>
-                            </div>
-                            <div class="flex items-center gap-3 pt-2">
-                                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                                <span class="text-green-400/80 text-xs font-medium">Delivering in 25-35 min</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="absolute -bottom-4 -left-4 w-24 h-24 border border-[#A17C3D]/20 rounded-full"></div>
-                    <div class="absolute -top-6 -right-6 w-4 h-4 bg-[#A17C3D] rounded-full"></div>
-                </div>
+    <section
+      id="delivery"
+      class="relative py-28 md:py-36 bg-[#121212] grain overflow-hidden"
+    >
+      <div class="absolute top-0 right-0 w-1/2 h-full opacity-[0.03]">
+        <div
+          class="absolute top-20 right-20 w-96 h-96 border border-white rounded-full"
+        ></div>
+        <div
+          class="absolute top-40 right-40 w-64 h-64 border border-white rounded-full"
+        ></div>
+      </div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <div class="reveal flex items-center gap-4 mb-6">
+              <div class="line-grow h-px bg-[#A17C3D]"></div>
+              <span
+                class="text-[#A17C3D] text-[11px] font-bold tracking-[0.25em] uppercase"
+                >Delivered to You</span
+              >
             </div>
+            <h2
+              class="reveal reveal-delay-1 text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] text-white"
+            >
+              Strategic<br />Delivery.
+            </h2>
+            <p
+              class="reveal reveal-delay-2 mt-8 text-neutral-500 text-base font-light leading-[1.8]"
+            >
+              Can't make it to the store? The full Ko Ramen experience is
+              available through Foodpanda. Same curated selection, same premium
+              standard — delivered straight to your door across Lahore and
+              Islamabad.
+            </p>
+            <div class="reveal reveal-delay-3 mt-10 space-y-4">
+              <div class="flex items-center gap-4">
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i data-lucide="check" class="w-4 h-4 text-[#A17C3D]"></i>
+                </div>
+                <span class="text-neutral-300 text-sm font-light"
+                  >Full Buldak Collection available for delivery</span
+                >
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i data-lucide="check" class="w-4 h-4 text-[#A17C3D]"></i>
+                </div>
+                <span class="text-neutral-300 text-sm font-light"
+                  >Premium K-snacks, drinks, and instant meals</span
+                >
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i data-lucide="check" class="w-4 h-4 text-[#A17C3D]"></i>
+                </div>
+                <span class="text-neutral-300 text-sm font-light"
+                  >Carefully packaged to preserve quality</span
+                >
+              </div>
+            </div>
+            <div class="reveal reveal-delay-4 mt-12">
+              <a
+                href="https://www.foodpanda.pk/"
+                target="_blank"
+                class="inline-flex items-center gap-4 px-10 py-5 bg-[#D70F64] text-white rounded-lg hover:bg-[#E8367E] transition-all duration-300 hover:shadow-lg hover:shadow-[#D70F64]/20 group"
+              >
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 19.5C4 18.837 4.26339 18.2011 4.73223 17.7322C5.20107 17.2634 5.83696 17 6.5 17C7.16304 17 7.79893 17.2634 8.26777 17.7322C8.73661 18.2011 9 18.837 9 19.5"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M20 19.5C20 18.837 19.7366 18.2011 19.2678 17.7322C18.7989 17.2634 18.163 17 17.5 17C16.837 17 16.2011 17.2634 15.7322 17.7322C15.2634 18.2011 15 18.837 15 19.5"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M20 17H4V11C4 9.93913 4.42143 8.92172 5.17157 8.17157C5.92172 7.42143 6.93913 7 8 7H16C17.0609 7 18.0783 7.42143 18.8284 8.17157C19.5786 8.92172 20 9.93913 20 11V17Z"
+                    stroke="white"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M9 4L12 7L15 4"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <div class="text-left">
+                  <div class="text-xs font-bold tracking-[0.12em] uppercase">
+                    Order on Foodpanda
+                  </div>
+                  <div class="text-[10px] font-light text-white/70 mt-0.5">
+                    Lahore & Islamabad
+                  </div>
+                </div>
+                <i
+                  data-lucide="arrow-up-right"
+                  class="w-4 h-4 ml-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300"
+                ></i>
+              </a>
+            </div>
+          </div>
+          <div class="reveal relative">
+            <div
+              class="relative bg-[#1a1a1a] border border-white/5 rounded-2xl p-8 md:p-12"
+            >
+              <div class="space-y-6">
+                <div class="flex items-center justify-between">
+                  <span
+                    class="text-[10px] font-bold tracking-[0.2em] text-neutral-600 uppercase"
+                    >Your Order</span
+                  >
+                  <span
+                    class="text-[10px] font-bold tracking-[0.2em] text-[#A17C3D] uppercase"
+                    >3 Items</span
+                  >
+                </div>
+                <div class="space-y-4">
+                  <div
+                    class="flex items-center gap-4 p-4 bg-white/[0.03] rounded-lg border border-white/5"
+                  >
+                    <div
+                      class="w-12 h-12 bg-[#A17C3D]/10 rounded-md flex items-center justify-center flex-shrink-0"
+                    >
+                      <i data-lucide="flame" class="w-5 h-5 text-[#A17C3D]"></i>
+                    </div>
+                    <div class="flex-1">
+                      <div class="text-white text-sm font-semibold">
+                        Buldak Original
+                      </div>
+                      <div class="text-neutral-600 text-xs font-light">× 2</div>
+                    </div>
+                    <div class="text-white text-sm font-semibold">PKR 780</div>
+                  </div>
+                  <div
+                    class="flex items-center gap-4 p-4 bg-white/[0.03] rounded-lg border border-white/5"
+                  >
+                    <div
+                      class="w-12 h-12 bg-[#A17C3D]/10 rounded-md flex items-center justify-center flex-shrink-0"
+                    >
+                      <i data-lucide="star" class="w-5 h-5 text-[#A17C3D]"></i>
+                    </div>
+                    <div class="flex-1">
+                      <div class="text-white text-sm font-semibold">
+                        Cheese Buldak
+                      </div>
+                      <div class="text-neutral-600 text-xs font-light">× 1</div>
+                    </div>
+                    <div class="text-white text-sm font-semibold">PKR 450</div>
+                  </div>
+                </div>
+                <div
+                  class="border-t border-white/5 pt-4 flex items-center justify-between"
+                >
+                  <span class="text-neutral-500 text-sm font-light"
+                    >Delivery</span
+                  >
+                  <span class="text-[#A17C3D] text-sm font-semibold">FREE</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-white text-base font-bold">Total</span>
+                  <span class="text-white text-xl font-black">PKR 1,230</span>
+                </div>
+                <div class="flex items-center gap-3 pt-2">
+                  <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span class="text-green-400/80 text-xs font-medium"
+                    >Delivering in 25-35 min</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="absolute -bottom-4 -left-4 w-24 h-24 border border-[#A17C3D]/20 rounded-full"
+            ></div>
+            <div
+              class="absolute -top-6 -right-6 w-4 h-4 bg-[#A17C3D] rounded-full"
+            ></div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Location / Store Info -->
     <section class="py-28 md:py-36 bg-[#F2F2F2]">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <div class="reveal bg-white rounded-lg p-10 border border-neutral-100 shadow-sm">
-                    <div class="w-10 h-10 bg-[#121212] rounded-sm flex items-center justify-center mb-6">
-                        <i data-lucide="map-pin" class="w-5 h-5 text-[#A17C3D]"></i>
-                    </div>
-                    <h3 class="text-[#121212] text-lg font-bold tracking-tight">Lahore</h3>
-                    <p class="mt-3 text-neutral-500 text-sm font-light leading-relaxed">
-                        Gulberg III, Lahore, Punjab, Pakistan
-                    </p>
-                    <p class="mt-1 text-neutral-400 text-xs font-light">
-                        Exact address available on WhatsApp
-                    </p>
-                </div>
-                <div class="reveal reveal-delay-1 bg-white rounded-lg p-10 border border-neutral-100 shadow-sm">
-                    <div class="w-10 h-10 bg-[#121212] rounded-sm flex items-center justify-center mb-6">
-                        <i data-lucide="map-pin" class="w-5 h-5 text-[#A17C3D]"></i>
-                    </div>
-                    <h3 class="text-[#121212] text-lg font-bold tracking-tight">Islamabad</h3>
-                    <p class="mt-3 text-neutral-500 text-sm font-light leading-relaxed">
-                        Coming Soon — Islamabad Capital Territory
-                    </p>
-                    <p class="mt-1 text-neutral-400 text-xs font-light">
-                        Follow us for launch updates
-                    </p>
-                </div>
-                <div class="reveal reveal-delay-2 bg-[#121212] rounded-lg p-10 border border-white/5 shadow-sm">
-                    <div class="w-10 h-10 bg-[#A17C3D] rounded-sm flex items-center justify-center mb-6">
-                        <i data-lucide="clock" class="w-5 h-5 text-white"></i>
-                    </div>
-                    <h3 class="text-white text-lg font-bold tracking-tight">Store Hours</h3>
-                    <div class="mt-3 space-y-2">
-                        <div class="flex justify-between">
-                            <span class="text-neutral-500 text-sm font-light">Mon — Thu</span>
-                            <span class="text-white text-sm font-semibold">12 PM — 12 AM</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-neutral-500 text-sm font-light">Fri — Sat</span>
-                            <span class="text-white text-sm font-semibold">12 PM — 1 AM</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-neutral-500 text-sm font-light">Sunday</span>
-                            <span class="text-white text-sm font-semibold">2 PM — 12 AM</span>
-                        </div>
-                    </div>
-                </div>
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div
+            class="reveal bg-white rounded-lg p-10 border border-neutral-100 shadow-sm"
+          >
+            <div
+              class="w-10 h-10 bg-[#121212] rounded-sm flex items-center justify-center mb-6"
+            >
+              <i data-lucide="map-pin" class="w-5 h-5 text-[#A17C3D]"></i>
             </div>
+            <h3 class="text-[#121212] text-lg font-bold tracking-tight">
+              Lahore
+            </h3>
+            <p class="mt-3 text-neutral-500 text-sm font-light leading-relaxed">
+              Gulberg III, Lahore, Punjab, Pakistan
+            </p>
+            <p class="mt-1 text-neutral-400 text-xs font-light">
+              Exact address available on WhatsApp
+            </p>
+          </div>
+          <div
+            class="reveal reveal-delay-1 bg-white rounded-lg p-10 border border-neutral-100 shadow-sm"
+          >
+            <div
+              class="w-10 h-10 bg-[#121212] rounded-sm flex items-center justify-center mb-6"
+            >
+              <i data-lucide="map-pin" class="w-5 h-5 text-[#A17C3D]"></i>
+            </div>
+            <h3 class="text-[#121212] text-lg font-bold tracking-tight">
+              Islamabad
+            </h3>
+            <p class="mt-3 text-neutral-500 text-sm font-light leading-relaxed">
+              Coming Soon — Islamabad Capital Territory
+            </p>
+            <p class="mt-1 text-neutral-400 text-xs font-light">
+              Follow us for launch updates
+            </p>
+          </div>
+          <div
+            class="reveal reveal-delay-2 bg-[#121212] rounded-lg p-10 border border-white/5 shadow-sm"
+          >
+            <div
+              class="w-10 h-10 bg-[#A17C3D] rounded-sm flex items-center justify-center mb-6"
+            >
+              <i data-lucide="clock" class="w-5 h-5 text-white"></i>
+            </div>
+            <h3 class="text-white text-lg font-bold tracking-tight">
+              Store Hours
+            </h3>
+            <div class="mt-3 space-y-2">
+              <div class="flex justify-between">
+                <span class="text-neutral-500 text-sm font-light"
+                  >Mon — Thu</span
+                >
+                <span class="text-white text-sm font-semibold"
+                  >12 PM — 12 AM</span
+                >
+              </div>
+              <div class="flex justify-between">
+                <span class="text-neutral-500 text-sm font-light"
+                  >Fri — Sat</span
+                >
+                <span class="text-white text-sm font-semibold"
+                  >12 PM — 1 AM</span
+                >
+              </div>
+              <div class="flex justify-between">
+                <span class="text-neutral-500 text-sm font-light">Sunday</span>
+                <span class="text-white text-sm font-semibold"
+                  >2 PM — 12 AM</span
+                >
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-[#121212] border-t border-white/5 py-16">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
-                <div>
-                    <div class="flex items-center gap-3 mb-5">
-                        <img src="assets/logo.jpeg" alt="Ko Ramen" class="logo-img-footer">
-                        <span class="text-white font-bold text-sm tracking-tight">KO RAMEN</span>
-                    </div>
-                    <p class="text-neutral-600 text-sm font-light leading-relaxed max-w-xs">
-                        Pakistan's first authentic Korean convenience store. A curated retail experience in Lahore and Islamabad.
-                    </p>
-                </div>
-                <div>
-                    <h4 class="text-neutral-500 text-[10px] font-bold tracking-[0.25em] uppercase mb-5">Navigation</h4>
-                    <div class="space-y-3">
-                        <a href="#collection" class="block text-neutral-400 text-sm font-light hover:text-white transition-colors duration-300">The Collection</a>
-                        <a href="#lounge" class="block text-neutral-400 text-sm font-light hover:text-white transition-colors duration-300">Noodle Lounge</a>
-                        <a href="#delivery" class="block text-neutral-400 text-sm font-light hover:text-white transition-colors duration-300">Delivery</a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="text-neutral-500 text-[10px] font-bold tracking-[0.25em] uppercase mb-5">Connect</h4>
-                    <div class="space-y-3">
-                        <a href="https://instagram.com" target="_blank" class="flex items-center gap-2 text-neutral-400 text-sm font-light hover:text-white transition-colors duration-300">
-                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                                <circle cx="12" cy="12" r="4"/>
-                                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-                            </svg>
-                            <span>Instagram</span>
-                        </a>
-                        <a href="https://wa.me/923097898401" target="_blank" class="flex items-center gap-2 text-neutral-400 text-sm font-light hover:text-white transition-colors duration-300">
-                            <i data-lucide="message-circle" class="w-4 h-4"></i>
-                            <span>WhatsApp</span>
-                        </a>
-                        <a href="https://www.foodpanda.pk/" target="_blank" class="flex items-center gap-2 text-neutral-400 text-sm font-light hover:text-white transition-colors duration-300">
-                            <i data-lucide="bike" class="w-4 h-4"></i>
-                            <span>Foodpanda</span>
-                        </a>
-                    </div>
-                </div>
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+          <div>
+            <div class="flex items-center gap-3 mb-5">
+              <img
+                src="assets/logo.jpeg"
+                alt="Ko Ramen"
+                class="logo-img-footer"
+              />
+              <span class="text-white font-bold text-sm tracking-tight"
+                >KO RAMEN</span
+              >
             </div>
-            <div class="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-                <span class="text-neutral-700 text-xs font-light">© 2024 Ko Ramen. All rights reserved.</span>
-                <span class="text-neutral-800 text-[10px] font-light tracking-wide">Lahore & Islamabad, Pakistan</span>
+            <p
+              class="text-neutral-600 text-sm font-light leading-relaxed max-w-xs"
+            >
+              Pakistan's first authentic Korean convenience store. A curated
+              retail experience in Lahore and Islamabad.
+            </p>
+          </div>
+          <div>
+            <h4
+              class="text-neutral-500 text-[10px] font-bold tracking-[0.25em] uppercase mb-5"
+            >
+              Navigation
+            </h4>
+            <div class="space-y-3">
+              <a
+                href="#collection"
+                class="block text-neutral-400 text-sm font-light hover:text-white transition-colors duration-300"
+                >The Collection</a
+              >
+              <a
+                href="#lounge"
+                class="block text-neutral-400 text-sm font-light hover:text-white transition-colors duration-300"
+                >Noodle Lounge</a
+              >
+              <a
+                href="#delivery"
+                class="block text-neutral-400 text-sm font-light hover:text-white transition-colors duration-300"
+                >Delivery</a
+              >
             </div>
+          </div>
+          <div>
+            <h4
+              class="text-neutral-500 text-[10px] font-bold tracking-[0.25em] uppercase mb-5"
+            >
+              Connect
+            </h4>
+            <div class="space-y-3">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                class="flex items-center gap-2 text-neutral-400 text-sm font-light hover:text-white transition-colors duration-300"
+              >
+                <svg
+                  class="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle
+                    cx="17.5"
+                    cy="6.5"
+                    r="1"
+                    fill="currentColor"
+                    stroke="none"
+                  />
+                </svg>
+                <span>Instagram</span>
+              </a>
+              <a
+                href="https://wa.me/923097898401"
+                target="_blank"
+                class="flex items-center gap-2 text-neutral-400 text-sm font-light hover:text-white transition-colors duration-300"
+              >
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>WhatsApp</span>
+              </a>
+              <a
+                href="https://www.foodpanda.pk/"
+                target="_blank"
+                class="flex items-center gap-2 text-neutral-400 text-sm font-light hover:text-white transition-colors duration-300"
+              >
+                <i data-lucide="bike" class="w-4 h-4"></i>
+                <span>Foodpanda</span>
+              </a>
+            </div>
+          </div>
         </div>
+        <div
+          class="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4"
+        >
+          <span class="text-neutral-700 text-xs font-light"
+            >© 2024 Ko Ramen. All rights reserved.</span
+          >
+          <span class="text-neutral-800 text-[10px] font-light tracking-wide"
+            >Lahore & Islamabad, Pakistan</span
+          >
+        </div>
+      </div>
     </footer>
 
     <!-- Fixed WhatsApp Button — Icon Only, Animated -->
-    <a href="https://wa.me/923097898401" target="_blank" 
-       class="wa-btn fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center hover:bg-[#20BD5A] transition-colors duration-300 hover:scale-110"
-       aria-label="Contact via WhatsApp">
-        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="white">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
+    <a
+      href="https://wa.me/923097898401"
+      target="_blank"
+      class="wa-btn fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center hover:bg-[#20BD5A] transition-colors duration-300 hover:scale-110"
+      aria-label="Contact via WhatsApp"
+    >
+      <svg class="w-7 h-7" viewBox="0 0 24 24" fill="white">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+        />
+      </svg>
     </a>
 
     <script>
+      lucide.createIcons();
+
+      const observerOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px",
+      };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      }, observerOptions);
+      document
+        .querySelectorAll(".reveal, .line-grow")
+        .forEach((el) => observer.observe(el));
+
+      const menuToggle = document.getElementById("menuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+      let menuOpen = false;
+      menuToggle.addEventListener("click", () => {
+        menuOpen = !menuOpen;
+        mobileMenu.classList.toggle("hidden");
+        menuToggle.innerHTML = menuOpen
+          ? '<i data-lucide="x" class="w-5 h-5"></i>'
+          : '<i data-lucide="menu" class="w-5 h-5"></i>';
         lucide.createIcons();
+      });
+      document.querySelectorAll(".mobile-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          menuOpen = false;
+          menuToggle.innerHTML = '<i data-lucide="menu" class="w-5 h-5"></i>';
+          lucide.createIcons();
+        });
+      });
 
-        const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        navbar.style.borderBottomColor =
+          window.scrollY > 100
+            ? "rgba(255,255,255,0.08)"
+            : "rgba(255,255,255,0.03)";
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            window.scrollTo({
+              top: target.getBoundingClientRect().top + window.pageYOffset - 80,
+              behavior: "smooth",
             });
-        }, observerOptions);
-        document.querySelectorAll('.reveal, .line-grow').forEach(el => observer.observe(el));
-
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        let menuOpen = false;
-        menuToggle.addEventListener('click', () => {
-            menuOpen = !menuOpen;
-            mobileMenu.classList.toggle('hidden');
-            menuToggle.innerHTML = menuOpen 
-                ? '<i data-lucide="x" class="w-5 h-5"></i>' 
-                : '<i data-lucide="menu" class="w-5 h-5"></i>';
-            lucide.createIcons();
+          }
         });
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuOpen = false;
-                menuToggle.innerHTML = '<i data-lucide="menu" class="w-5 h-5"></i>';
-                lucide.createIcons();
-            });
+      });
+
+      // ══════════════════════════════════════════
+      // ✦ ANTIGRAVITY AWESOME SKILLS — INSTALLED
+      // ══════════════════════════════════════════
+      console.log(
+        "%c✦ ANTIGRAVITY%c\n%cnpx antigravity-awesome-skills — globally installed ✓\n\nSkills deployed:\n → Page loader ceremony\n → Custom bronze cursor glow\n → Steam particle engine\n → Cinematic drag-to-scroll gallery\n → 3D tilt cards\n → Scroll-reveal animations\n\nBuilt for Ko Ramen 🔥 Seoul Chic forever.",
+        "color:#A17C3D;font-size:16px;font-weight:bold;font-family:monospace",
+        "",
+        "color:#666;font-size:11px;font-family:monospace;line-height:1.9",
+      );
+
+      // Page Loader
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          const loader = document.getElementById("page-loader");
+          if (loader) {
+            loader.classList.add("fade-out");
+            setTimeout(() => loader.remove(), 900);
+          }
+        }, 1300);
+      });
+
+      // Custom Cursor
+      const cGlow = document.getElementById("cursor-glow");
+      const cDot = document.getElementById("cursor-dot");
+      let mx = 0,
+        my = 0,
+        gx = 0,
+        gy = 0;
+      document.addEventListener("mousemove", (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        cDot.style.left = mx + "px";
+        cDot.style.top = my + "px";
+        cDot.style.opacity = "1";
+      });
+      document.addEventListener("mouseleave", () => (cDot.style.opacity = "0"));
+      (function animG() {
+        gx += (mx - gx) * 0.08;
+        gy += (my - gy) * 0.08;
+        cGlow.style.left = gx + "px";
+        cGlow.style.top = gy + "px";
+        requestAnimationFrame(animG);
+      })();
+      document.querySelectorAll("a, button").forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+          cDot.style.width = "14px";
+          cDot.style.height = "14px";
+          cDot.style.background = "transparent";
+          cDot.style.border = "2px solid #A17C3D";
         });
-
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            navbar.style.borderBottomColor = window.scrollY > 100 
-                ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.03)';
+        el.addEventListener("mouseleave", () => {
+          cDot.style.width = "6px";
+          cDot.style.height = "6px";
+          cDot.style.background = "#A17C3D";
+          cDot.style.border = "none";
         });
+      });
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' });
-                }
-            });
+      // Steam Particles
+      const steamWrap = document.getElementById("steamWrap");
+      function spawnSteam() {
+        if (!steamWrap) return;
+        const p = document.createElement("div");
+        p.className = "steam-p";
+        p.style.left = Math.random() * 100 + "%";
+        p.style.animationDuration = 7 + Math.random() * 7 + "s";
+        p.style.animationDelay = Math.random() * 4 + "s";
+        p.style.opacity = (Math.random() * 0.5).toString();
+        p.style.width = 2 + Math.random() * 3 + "px";
+        steamWrap.appendChild(p);
+        setTimeout(() => p.remove(), 14000);
+      }
+      setInterval(spawnSteam, 350);
+
+      // Drag-to-scroll Gallery
+      const reel = document.getElementById("galleryReel");
+      if (reel) {
+        let down = false,
+          startX,
+          sLeft;
+        reel.addEventListener("mousedown", (e) => {
+          down = true;
+          reel.classList.add("dragging");
+          startX = e.pageX - reel.offsetLeft;
+          sLeft = reel.scrollLeft;
         });
-
-        // ══════════════════════════════════════════
-        // ✦ ANTIGRAVITY AWESOME SKILLS — INSTALLED
-        // ══════════════════════════════════════════
-        console.log(
-            '%c✦ ANTIGRAVITY%c\n%cnpx antigravity-awesome-skills — globally installed ✓\n\nSkills deployed:\n → Page loader ceremony\n → Custom bronze cursor glow\n → Steam particle engine\n → Cinematic drag-to-scroll gallery\n → 3D tilt cards\n → Scroll-reveal animations\n\nBuilt for Ko Ramen 🔥 Seoul Chic forever.',
-            'color:#A17C3D;font-size:16px;font-weight:bold;font-family:monospace',
-            '',
-            'color:#666;font-size:11px;font-family:monospace;line-height:1.9'
-        );
-
-        // Page Loader
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const loader = document.getElementById('page-loader');
-                if (loader) { loader.classList.add('fade-out'); setTimeout(() => loader.remove(), 900); }
-            }, 1300);
+        reel.addEventListener("mouseleave", () => {
+          down = false;
+          reel.classList.remove("dragging");
         });
-
-        // Custom Cursor
-        const cGlow = document.getElementById('cursor-glow');
-        const cDot  = document.getElementById('cursor-dot');
-        let mx = 0, my = 0, gx = 0, gy = 0;
-        document.addEventListener('mousemove', e => {
-            mx = e.clientX; my = e.clientY;
-            cDot.style.left = mx + 'px'; cDot.style.top = my + 'px';
-            cDot.style.opacity = '1';
+        reel.addEventListener("mouseup", () => {
+          down = false;
+          reel.classList.remove("dragging");
         });
-        document.addEventListener('mouseleave', () => cDot.style.opacity = '0');
-        (function animG() {
-            gx += (mx - gx) * 0.08; gy += (my - gy) * 0.08;
-            cGlow.style.left = gx + 'px'; cGlow.style.top = gy + 'px';
-            requestAnimationFrame(animG);
-        })();
-        document.querySelectorAll('a, button').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cDot.style.width = '14px'; cDot.style.height = '14px';
-                cDot.style.background = 'transparent'; cDot.style.border = '2px solid #A17C3D';
-            });
-            el.addEventListener('mouseleave', () => {
-                cDot.style.width = '6px'; cDot.style.height = '6px';
-                cDot.style.background = '#A17C3D'; cDot.style.border = 'none';
-            });
+        reel.addEventListener("mousemove", (e) => {
+          if (!down) return;
+          e.preventDefault();
+          reel.scrollLeft = sLeft - (e.pageX - reel.offsetLeft - startX) * 1.5;
         });
+      }
 
-        // Steam Particles
-        const steamWrap = document.getElementById('steamWrap');
-        function spawnSteam() {
-            if (!steamWrap) return;
-            const p = document.createElement('div');
-            p.className = 'steam-p';
-            p.style.left = (Math.random() * 100) + '%';
-            p.style.animationDuration = (7 + Math.random() * 7) + 's';
-            p.style.animationDelay = (Math.random() * 4) + 's';
-            p.style.opacity = (Math.random() * 0.5).toString();
-            p.style.width = (2 + Math.random() * 3) + 'px';
-            steamWrap.appendChild(p);
-            setTimeout(() => p.remove(), 14000);
-        }
-        setInterval(spawnSteam, 350);
-
-        // Drag-to-scroll Gallery
-        const reel = document.getElementById('galleryReel');
-        if (reel) {
-            let down = false, startX, sLeft;
-            reel.addEventListener('mousedown', e => { down = true; reel.classList.add('dragging'); startX = e.pageX - reel.offsetLeft; sLeft = reel.scrollLeft; });
-            reel.addEventListener('mouseleave', () => { down = false; reel.classList.remove('dragging'); });
-            reel.addEventListener('mouseup', () => { down = false; reel.classList.remove('dragging'); });
-            reel.addEventListener('mousemove', e => {
-                if (!down) return; e.preventDefault();
-                reel.scrollLeft = sLeft - (e.pageX - reel.offsetLeft - startX) * 1.5;
-            });
-        }
-
-        // 3D Tilt on Product Cards
-        document.querySelectorAll('.product-card').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const r = card.getBoundingClientRect();
-                const rx = ((e.clientY - r.top  - r.height / 2) / (r.height / 2)) * -5;
-                const ry = ((e.clientX - r.left - r.width  / 2) / (r.width  / 2)) *  5;
-                card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-8px)`;
-            });
-            card.addEventListener('mouseleave', () => card.style.transform = '');
+      // 3D Tilt on Product Cards
+      document.querySelectorAll(".product-card").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const r = card.getBoundingClientRect();
+          const rx = ((e.clientY - r.top - r.height / 2) / (r.height / 2)) * -5;
+          const ry = ((e.clientX - r.left - r.width / 2) / (r.width / 2)) * 5;
+          card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-8px)`;
         });
+        card.addEventListener("mouseleave", () => (card.style.transform = ""));
+      });
     </script>
-</body>
+  </body>
 </html>
