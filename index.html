@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ko Ramen — Pakistan's First Korean Convenience Store</title>
     <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="preload" href="assets/hero-bg.jpeg" as="image" fetchpriority="high" />
+    <link rel="preload" href="assets/logo.jpeg" as="image" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
 
       * {
         margin: 0;
@@ -218,7 +222,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        transition: opacity 0.3s ease;
       }
       #page-loader.fade-out {
         opacity: 0;
@@ -516,6 +520,7 @@
           src="assets/hero-bg.jpeg"
           alt="Ko Ramen Store Interior"
           class="w-full h-full object-cover"
+          fetchpriority="high"
         />
         <div class="hero-overlay absolute inset-0"></div>
         <!-- Steam Particles -->
@@ -670,6 +675,7 @@
                 src="assets/Samyang-Buldak-Hot-Chicken-Flavour-Ramen-Carbonara.webp"
                 alt="Buldak carbonara"
                 class="product-img w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <div class="p-5">
@@ -696,6 +702,7 @@
                 src="assets/bf754a9f-ba1d-414e-a19f-624da492a78e.webp"
                 alt="Buldak cream carbonara"
                 class="product-img w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <div class="p-5">
@@ -722,6 +729,7 @@
                 src="assets/images.jpg"
                 alt="2x"
                 class="product-img w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <div class="p-5">
@@ -746,6 +754,7 @@
                 src="assets/5.png"
                 alt="3x"
                 class="product-img w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <div class="p-5">
@@ -770,6 +779,7 @@
                 src="assets/5d7ffdff-d9a3-4073-a0eb-48d9fac8b94f.webp"
                 alt="Buldak cheese"
                 class="product-img w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <div class="p-5">
@@ -796,6 +806,7 @@
                 src="assets/61TiwQVF3uL.jpg"
                 alt="Buldak quatro cheese"
                 class="product-img w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <div class="p-5">
@@ -822,6 +833,7 @@
                 src="assets/images (1).jpg"
                 alt="Shin ramyeon"
                 class="product-img w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <div class="p-5">
@@ -848,6 +860,7 @@
                 src="assets/6beeb92555b3cffe50a42020b47fa521.jpg_720x720q80.jpg"
                 alt="Buldak hot chicken"
                 class="product-img w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <div class="p-5">
@@ -874,6 +887,7 @@
                 src="assets/samyang-ramyeon.jpg"
                 alt="Samyang original spicy"
                 class="product-img w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <div class="p-5">
@@ -900,6 +914,7 @@
                 src="assets/8801073113947.webp"
                 alt="Jjajng"
                 class="product-img w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <div class="p-5">
@@ -926,6 +941,7 @@
                 src="assets/1177116-1.jpg"
                 alt="Kimchi"
                 class="product-img w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <div class="p-5">
@@ -952,6 +968,7 @@
                 src="assets/ee6577c26406549b265ba6695ccf1893.jpg"
                 alt="Herbenaro lime"
                 class="product-img w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <div class="p-5">
@@ -979,6 +996,7 @@
                   src="assets/WhatsApp Image 2026-04-28 at 3.18.34 PM.jpeg"
                   alt="Hot pot"
                   class="product-img w-full h-full min-h-[320px] object-cover"
+                  loading="lazy"
                 />
               </div>
               <div class="p-6 md:p-8 flex flex-col justify-between">
@@ -1027,6 +1045,7 @@
           src="assets/signature.jpeg"
           alt="The Noodle Wall"
           class="w-full h-full object-cover"
+          loading="lazy"
         />
         <div
           class="absolute inset-0 bg-gradient-to-b from-[#121212] via-[#121212]/50 to-[#121212]"
@@ -1067,6 +1086,7 @@
                 src="assets/WhatsApp Image 2026-04-28 at 3.18.34 PM.jpeg"
                 alt="Fresh ramen bowl at the Ko Ramen self-cook station"
                 class="w-full aspect-[4/5] object-cover rounded-lg shadow-2xl"
+                loading="lazy"
               />
               <div
                 class="absolute -bottom-6 -right-6 md:-right-10 bg-white p-6 md:p-8 rounded-lg shadow-xl max-w-[220px]"
@@ -1537,6 +1557,7 @@
                 src="assets/logo.jpeg"
                 alt="Ko Ramen"
                 class="logo-img-footer"
+                loading="lazy"
               />
               <span class="text-white font-bold text-sm tracking-tight"
                 >KO RAMEN</span
@@ -1669,6 +1690,7 @@
       </svg>
     </a>
 
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
       lucide.createIcons();
 
@@ -1738,13 +1760,11 @@
 
       // Page Loader
       window.addEventListener("load", () => {
-        setTimeout(() => {
-          const loader = document.getElementById("page-loader");
-          if (loader) {
-            loader.classList.add("fade-out");
-            setTimeout(() => loader.remove(), 900);
-          }
-        }, 1300);
+        const loader = document.getElementById("page-loader");
+        if (loader) {
+          loader.classList.add("fade-out");
+          setTimeout(() => loader.remove(), 300);
+        }
       });
 
       // Custom Cursor
